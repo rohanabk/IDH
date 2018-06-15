@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Details</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript">
+
+        // Load the Google Transliterate API
+        google.load("elements", "1", {
+              packages: "transliteration"
+            });
+  
+        function onLoad() {
+          var options = {
+              sourceLanguage:
+                  google.elements.transliteration.LanguageCode.ENGLISH,
+              destinationLanguage:
+                  [google.elements.transliteration.LanguageCode.KANNADA],
+              shortcutKey: 'ctrl+g',
+              transliterationEnabled: true
+          };
+  
+          // Create an instance on TransliterationControl with the required
+          // options.
+          var control =
+              new google.elements.transliteration.TransliterationControl(options);
+  
+          // Enable transliteration in the textbox with id
+          // 'transliterateTextarea'.
+          control.makeTransliteratable(['transliterateTextarea']);
+          control.makeTransliteratable(['cityTrans']);
+
+        }
+        google.setOnLoadCallback(onLoad);
+      </script>
+</head>
+<body>
+    <div style=" width: 50%;padding: 20px;margin: 100px;border:2px solid darkblue ;">
+            <form action="printPage" method="POST">{% csrf_token %}
+                    <p>Customer name(English):<b>{{ customer.cName }}</b></p>
+            
+                    <input type="hidden" name="pk" id="pk" value="{{ customer.pk }}">
+                          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input name="ckName"  class="mdl-textfield__input" id="transliterateTextarea"  value="{{ customer.ckName }}">
+                                <label class="mdl-textfield__label" for="ckName">Customer Name(Kannada)</label>
+                              </div>
+                              <p>City:<b>{{ customer.city }}</b></p>
+
+                              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input type="text"  class="mdl-textfield__input" name="kcity" id="cityTrans" value="{{ customer.kcity }}">
+        
+                                    
+                                    <label class="mdl-textfield__label" for="kcity">City(Kannada)</label>
+                                  </div>
+                                  
+                    <p>Address:<b>{{ customer.address }}</b></p>
+                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" name="numberofbox" type="text" id="numberofbox">
+                            <label class="mdl-textfield__label" for="numberofbox">No Of Box</label>
+                          </div><br>
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" type="submit">Print</button>
+            </form>
+              
+    </div>
+  
+</body>
+</html>
+<style>
+        #transliterateTextarea{
+          text-transform: lowercase;
+        }
+      </style>
