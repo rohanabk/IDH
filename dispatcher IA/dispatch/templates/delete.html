@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.js
+    "></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css
+    ">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+  <title>Delete Customer</title>
+  </head>
+  <body>
+    <center>
+        <div style="width: 50%;margin-top:100px; ">
+            <table id="customerList" >
+                <thead>
+                  <tr>
+                    <th>Customer code</th>
+                    <th>Customer</th>
+                    <th>City</th>
+                    <TH>Action</TH>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for data in customers %}
+                  <tr>
+                   <td>{{ data.usn }}</td>
+                 <td>{{ data.cName }}</td>
+                 <td>{{ data.city }}</td>
+               <td><a href="{% url 'delete' data.pk %}">DELETE</a></td></tr>
+                  {% endfor %}
+                </tbody>
+              
+              </table>
+         </div>
+    </center>
+  
+   
+  
+  </body>
+</html> 
+
+<script>
+  $(document).ready(function(){
+    var table = $('#customerList').DataTable();
+   
+  });
+</script>

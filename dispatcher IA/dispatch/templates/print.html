@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>IDH</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+   <center>
+        <div id="container">
+                <div>
+                        <center>
+                            <span>
+                                    <h2 style="margin-top:10px;margin-left: -430px;font-size: 30px; ">MEDICINES BOX </h2>
+
+                                  <div style=" margin-left:500px ;margin-top:-20px; "> <span style="font-size: 25px;"><b>{{ customer.numberofbox }}</b></span><span style="font-size: 20px;">  Box(es)</span>  </div>
+                                 <div style="margin-top: -20px">
+                                        Date: <span id="datetime"></span>
+                                 </div>
+
+                            </span>
+
+                            </center>
+
+                    </div>
+                    <center>
+                        <div>
+                            <h4 style="margin-top: 10px;margin-left: -600px;">To,<br></h4>
+                        <b> <h1 style="font-size: 40px"><u>{{ customer.ckName }}</u> </h1> </b> <br>
+                            <div style="margin-top:-20px;font-size: 30px; "><b><u>{{ customer.kcity }}</u></b></div>
+                            <h3 style="margin-left: -300px;"></h3>
+                        </div>
+
+
+                    </center>
+
+                    <div>
+                       <CENTER><div style="margin-top:10px ;margin-bottom: 0px;font-size: 20px;margin-left: -200px;">From,</div><br><h2 style="margin-top: -10px;margin-bottom: 40px;">M/s. IRKAL A ASSOCIATES<br><I style="font-size: 15px">PHARMACEUTICAL DISTRIBUTOR</I><br>HUBBALLI-580023<BR>0836-2282919, 9538200393</h2></CENTER> 
+                    </div>
+            </div>
+   </center>
+
+</body>
+</html>
+<style>
+    h1{
+        margin: 0%;
+    }
+    h3{
+        margin: 0%;
+    }
+    h2{
+        margin: 0%;
+    }
+    h4{
+        margin: 0%;
+    }
+    #container {
+    overflow: hidden;
+
+    height: auto;
+    width: 700px;
+    border: 1px solid black;
+    position: relative;
+}
+
+
+</style>
+<script>
+        var dt = new Date();
+        document.getElementById("datetime").innerHTML = ((("0"+dt.getDate()).slice(-2)) +"/"+ ("0"+(dt.getMonth()+1)).slice(-2))+"/"+ (dt.getFullYear()) ;
+        </script>
